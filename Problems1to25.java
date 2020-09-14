@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
-public class Problems {
+public class Problems1to25 {
 	
 	public static void main(String[] args) {
 		/*System.out.println("1) " + problem1());
