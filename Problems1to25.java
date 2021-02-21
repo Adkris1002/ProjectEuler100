@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
-public class Problems1to25 {
+public class Problems1to26 {
 	
 	public static void main(String[] args) {
 		/*System.out.println("1) " + problem1());
@@ -863,18 +863,29 @@ public class Problems1to25 {
 		return 0;
 	}
 
-	private static double problem26() {
-		//(new BigDecimal("1").divide(new BigDecimal("5")).toString())
-		
-		return lengthOfRecur(11/12.0);
+	private static String problem26() {
+		int bestNumber = 0;
+		int bestLength = 0;
+		for (int i = 1; i <= 1000; i++) {
+			int len = givePeriod(i);
+			if (len > bestLength) {
+				bestNumber = i;
+				bestLength = len;
+			}
+		}
+		return Integer.toString(bestNumber);
 	}
 
-	private static double lengthOfRecur(double d) {
-		
-		d /= 10.0;
-		d = d % (1.0/10.0);
-		d *= 10.0;
-		
-		return d;
+	private static int givePeriod(int bottom) {
+		ArrayList<Integer> remainders = new ArrayList<>();
+		ArrayList<Integer> digits = new ArrayList<>();
+		int top = 1;
+		while (!remainders.contains(top%bottom)) {
+			digits.add(top*10/bottom);
+			remainders.add(top);
+			top*=10;
+			top%=bottom;
+		}
+		return digits.size();
 	}
 }
